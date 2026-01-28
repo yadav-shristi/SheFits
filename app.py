@@ -2,9 +2,11 @@ import streamlit as st
 import joblib
 import numpy as np
 import pandas as pd
-model = joblib.load("model/size_prediction_model.pkl")
-scaler = joblib.load("model/scaler.pkl")
-label_encoder = joblib.load("model/label_encoder.pkl")
+import os
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+model = joblib.load(os.path.join(BASE_DIR, "model", "size_prediction_model.pkl"))
+scaler = joblib.load(os.path.join(BASE_DIR, "model", "scaler.pkl"))
+label_encoder = joblib.load(os.path.join(BASE_DIR, "model", "label_encoder.pkl"))
 st.title("Women's Clothing Size Prediction")
 st.write("Enter your body measurements to predict the best clothing size.")
 height = st.number_input("Height (cm)", 140, 200)
